@@ -1,0 +1,369 @@
+####################
+#    Layout        #
+####################
+snippet elrow "Element UI Row: Basic"
+<el-row :gutter="${1:10}">
+</el-row>
+endsnippet
+
+snippet elrow:flex "Element UI Row: Flex"
+<el-row
+	type="flex"
+	:gutter="${1:10}"
+	justify="${2:center}"
+>
+</el-row>
+endsnippet
+
+snippet elcol "Element UI Column: Basic"
+<el-col :span="${1:24}">
+</el-col>
+endsnippet
+
+snippet elcol:responsive "Element UI Column: Responsive"
+<el-col
+	:xs="$1"
+	:sm="$2"
+	:md="$3"
+	:lg="$4"
+	:xl="$5"
+>
+</el-col>
+endsnippet
+
+####################
+#    Container     #
+####################
+snippet elcon "Element UI Container: Basic"
+<el-container>
+  <el-header>$1</el-header>
+  <el-main>$2</el-main>
+  <el-footer>$3</el-footer>
+</el-container>
+endsnippet
+
+snippet elcon:aside "Element UI Container: Aside"
+<el-container>
+  <el-aside width="200px">$1</el-aside>
+  <el-container>
+    <el-header>$2</el-header>
+    <el-main>$3</el-main>
+    <el-footer>$4</el-footer>
+  </el-container>
+</el-container>
+endsnippet
+
+####################
+#    Radio         #
+####################
+snippet elra "Element UI Radio: Basic"
+<el-radio v-model="$1" label="$2">${3:String}</el-radio>
+endsnippet
+
+snippet elra:group "Element UI Radio: Group"
+<el-radio-group v-model="${1:Array}">
+	<el-radio :label="$2">${3:String}</el-radio>
+</el-radio-group>"
+endsnippet
+
+snippet elra:group-button "Element UI Radio: Group button"
+<el-radio-group v-model="$1">
+	<el-radio-button :label="$2">${3:String}</el-radio-button>
+</el-radio-group>
+endsnippet
+
+####################
+#    Checkbox      #
+####################
+snippet elch "Element UI Checkbox: Basic"
+<el-checkbox v-model="${1:Boolean}">${2:String}</el-checkbox>
+endsnippet
+
+snippet elch:group "Element UI Checkbox: Group"
+<el-checkbox-group v-model="${1:Array}">
+	<el-checkbox label="$2"></el-checkbox>
+    <el-checkbox label="$3" disabled></el-checkbox>
+</el-checkbox-group>
+endsnippet
+
+snippet elch:indeterminate "Element UI Checkbox: Indeterminate"
+<el-checkbox
+	:indeterminate="${1:Boolean}"
+	v-model="${2:Boolean}"
+	@change="${3:handleFunction}"
+>
+	${4:String}
+</el-checkbox>
+<el-checkbox-group
+	v-model="${5:Array}"
+	@change="${6:handleFunction}"
+>
+	<el-checkbox
+		v-for="(${7:item}, index) in $7s"
+		:label="$7.title"
+		:key="index"
+	>
+		{{ ${9:String} }}
+	</el-checkbox>
+</el-checkbox-group>
+endsnippet
+
+snippet elch:min-max "Element UI Checkbox: Min-Max"
+<el-checkbox-group
+	v-model="${1:Array}"
+	:min="1"
+	:max="2"
+>
+	<el-checkbox
+		v-for="(${2:item}, index) in $2s"
+		:label="$2.title"
+		:key="index"
+	>
+		{{ ${3:String} }}
+	</el-checkbox>
+</el-checkbox-group>
+endsnippet
+
+snippet elch:button "Element UI Checkbox: Button"
+<el-checkbox-group
+	v-model="${1:Array}"
+	size="${2:mini}"
+>
+	<el-checkbox
+		v-for="(${3:item}, index) in $3s"
+		:label="$3.title"
+		:key="index"
+	>
+		{{ ${4:String} }}
+	</el-checkbox>
+</el-checkbox-group>
+endsnippet
+
+####################
+#    Button        #
+####################
+snippet elb "Element UI Button: Basic"
+<el-button type='${1:primary}'>${2:String}</el-button>
+endsnippet
+
+snippet elb:icon "Element UI Button: Icon"
+<el-button type='${1:primary}' icon='${2:el-icon-edit}'>$3</el-button>
+endsnippet
+
+snippet elb:circle "Element UI Button: Circle"
+<el-button type='${1:primary}' icon='${2:el-icon-edit}' circle/>
+endsnippet
+
+snippet elb:plain "Element UI Button: Plain"
+<el-button type='${1:primary}' plain>$2</el-button>
+endsnippet
+
+snippet elb:round "Element UI Button: Round"
+<el-button type='${1:primary}' round>$2</el-button>
+endsnippet
+
+snippet elb:text "Element UI Button: Text"
+<el-button type='text'>$1</el-button>
+endsnippet
+
+####################
+#    Input         #
+####################
+snippet elin "Element UI Input: Basic"
+<el-input
+	v-model="${1:String}"
+	placeholder="${2:String}"
+	clearable
+	disabled
+/>
+endsnippet
+
+snippet elin:icon "Element UI Input: Icon"
+<el-input
+	v-model="${1:String}"
+    prefix-icon="${3:el-icon-search}"
+    suffix-icon="${4:el-icon-search}"
+    placeholder="${5:String}"
+/>
+endsnippet
+
+snippet elin:icon-slot "Element UI Input: Icon slot"
+<el-input
+	v-model="${1:String}"
+	placeholder="${2:String}"
+>
+    <i
+		slot="${3:prefix}"
+		class="${4:el-input__icon el-icon-search}"
+	/>
+</el-input>
+endsnippet
+
+snippet elin:number "Element UI Input: Number"
+<el-input-number
+	v-model="${1:Number}"
+	@change="${2:handleFunction}"
+	:min="${3:Number}"
+	:max="${4:Number}"
+	:step="${5:Number}"
+	:precision="${6:Number}"
+	controls-position="${7:right}"
+	size="${8:small}"
+/>
+endsnippet
+
+####################
+#    Select        #
+####################
+snippet els "Element UI Select: Basic"
+<el-select
+	v-model="${1:String}"
+	placeholder="${2:String}"
+	clearable
+	filterable
+	multiple
+>
+	<el-option
+		v-for="(${3:item}, index) in $3s"
+		:label="$3.title"
+		:key="index"
+		:value="$3.value"
+	/>
+</el-select>
+endsnippet
+
+snippet els:group "Element UI Select: Group"
+<el-select
+	v-model="${1:String}"
+	placeholder="${2:String}"
+	clearable
+	multiple
+>
+	<el-option-group
+		v-for="(${3:item}, index) in $3s"
+		:label="$3.title"
+		:key="index"
+	>
+		<el-option
+			v-for="(${4:item}, index) in $4s"
+			:label="$4.title"
+			:key="index"
+			:value="$4.value"
+		/>
+	</el-option-group>
+</el-select>
+endsnippet
+
+snippet els:remote "Element UI Select: Remote search"
+<el-select
+	v-model="${1:String}"
+	placeholder="${2:String}"
+	:loading="${3:Boolean}"
+	${4:multiple}
+	filterable
+	remote
+	reserve-keyword
+	:remote-method="${5:remoteMethod}"
+>
+	<el-option
+		v-for="(${6:item}, index) in $6s"
+		:label="$6.title"
+		:key="index"
+		:value="$6.value"
+	/>
+</el-select>
+endsnippet
+
+snippet els:create "Element UI Select: Create new"
+<el-select
+	v-model="${1:String}"
+	placeholder="${2:String}"
+	:loading="${3:Boolean}"
+	${4:multiple}
+	filterable
+	allow-create
+	${5:default-first-option}
+>
+	<el-option
+		v-for="(${6:item}, index) in $6s"
+		:label="$6.title"
+		:key="index"
+		:value="$6.value"
+	/>
+</el-select>
+endsnippet
+
+####################
+#    Form          #
+####################
+snippet elf "Element UI Form: Complex"
+<el-form ref="form" :model="$1" label-width="120px">
+  <el-form-item label="Activity name">
+    <el-input v-model="$1.name"></el-input>
+  </el-form-item>
+  <el-form-item label="Activity zone">
+    <el-select v-model="$1.region" placeholder="please select your zone">
+      <el-option label="Zone one" value="shanghai"></el-option>
+    </el-select>
+  </el-form-item>
+  <el-form-item label="Activity time">
+    <el-col :span="11">
+      <el-date-picker type="date" placeholder="Pick a date" v-model="$1.date1" style="width: 100%;"></el-date-picker>
+    </el-col>
+    <el-col class="line" :span="2">-</el-col>
+    <el-col :span="11">
+      <el-time-picker type="fixed-time" placeholder="Pick a time" v-model="$1.date2" style="width: 100%;"></el-time-picker>
+    </el-col>
+  </el-form-item>
+  <el-form-item label="Instant delivery">
+    <el-switch v-model="$1.delivery"></el-switch>
+  </el-form-item>
+  <el-form-item label="Activity type">
+    <el-checkbox-group v-model="$1.type">
+      <el-checkbox label="Online activities" name="type"></el-checkbox>
+      <el-checkbox label="Promotion activities" name="type"></el-checkbox>
+    </el-checkbox-group>
+  </el-form-item>
+  <el-form-item label="Resources">
+    <el-radio-group v-model="$1.resource">
+      <el-radio label="Sponsor"></el-radio>
+      <el-radio label="Venue"></el-radio>
+    </el-radio-group>
+  </el-form-item>
+  <el-form-item label="Activity form">
+    <el-input type="textarea" v-model="$1.desc"></el-input>
+  </el-form-item>
+  <el-form-item>
+    <el-button type="primary" @click="onSubmit">Create</el-button>
+    <el-button>Cancel</el-button>
+  </el-form-item>
+</el-form>
+endsnippet
+
+####################
+#    Table         #
+####################
+snippet eltable "Element UI Table: Basic"
+<el-table
+	:data="${1:array}"
+	style="width: 100%"
+>
+	<el-table-column
+		prop="date"
+		label="Date"
+		width="180"
+	>
+	</el-table-column>
+</el-table>
+endsnippet
+
+####################
+#    Message       #
+####################
+snippet elm "Element UI Message script"
+this.$message({
+	showClose: true,
+	message: '$1',
+	type: '$2',
+});
+endsnippet
